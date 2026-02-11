@@ -1,0 +1,110 @@
+scalar DateTime
+
+type User {
+    id : ID!
+    name : String!
+    email : String!
+    cart : Cart!
+    createdAt : DateTime!
+}
+
+input AddUserInput{
+    name : String!
+    email : String!
+}
+
+interface Product {
+    id: ID!
+    name : String!
+    price: Float!
+    productType : ProductType!
+}
+
+type Electronics implements Product{
+    id: ID!
+    name : String!
+    price: Float!
+    productType : ProductType!
+    warrantPeriod: String!
+}
+
+
+type Clothing implements Product{
+    id: ID!
+    name : String!
+    price: Float!
+    productType : ProductType!
+    size : String!
+}
+
+enum ProductType {
+    ELECTRONICS
+    CLOTHING
+}
+
+input AddProductInput {
+    name : String!
+    price : Float!
+    productType : ProductType!
+    warrantPeriod : String
+    size : String
+}
+
+type CartItem{
+    id : ID!
+    product: Product!
+    quantity : Int!
+}
+
+type Cart{
+    id : ID!
+    user: User!
+    items: [CartItem]!
+    totalAmount: Float!
+}
+
+input AddCartItemInput{
+    userId : ID!
+    productId : ID!
+    quantity : Int!
+}
+
+input DeleteCartItemInput{
+    userId : ID!
+    cartItemId : ID!
+}
+
+type Query{
+    """유저정보 조회"""
+    getUser(userId: ID!) : User!
+
+    """제품 조회"""
+    getProducts: [Product]!
+
+    """사용자 카트 조회"""
+    getUserCart(userId : ID!) : Cart!
+
+    """상품 검색"""
+    search(keyword: String!) : [SearchResult]!
+}
+
+# union타입에는 Interface가 직접 등록될 수 없다.
+union SearchResult = User | Electronics | Clothing
+
+type Mutation {
+    """유저 추가"""
+    addUser(addUserInput : AddUserInput!) : User!
+
+    """제품 추가"""
+    addProduct(addProductInput : AddProductInput) : Product!
+
+    """장바구니 추가"""
+    addCartItem(addCartItemInput : AddCartItemInput) : CartItem!
+
+    """장바구니 삭제"""
+    deleteCartItem(deleteCartItemInput : DeleteCartItemInput) : Cart!
+}
+
+type Subscription{
+    newProduct(productName : String) : Product!
+}

@@ -1,0 +1,36 @@
+interface Product {
+    id: ID!
+    name : String!
+    price: Float!
+    productType : ProductType!
+}
+
+type Electronics implements Product{
+    id: ID!
+    name : String!
+    price: Float!
+    productType : ProductType!
+    warrantPeriod: String!
+}
+
+
+type Clothing implements Product{
+    id: ID!
+    name : String!
+    price: Float!
+    productType : ProductType!
+    size : String!
+}
+
+enum ProductType {
+    ELECTRONICS
+    CLOTHING
+}
+
+input AddProductInput {
+    name : String!
+    price : Float!
+    productType : ProductType!
+    warrantPeriod : String
+    size : String
+}

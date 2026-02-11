@@ -1,0 +1,15 @@
+type Query{
+    # 유저정보
+    getUser(userId: ID!) : User!
+
+    # 제품 조회
+    getProducts: [Product]!
+
+    # 사용자 카트 조회
+    getUserCart(userId : ID!) : Cart!
+
+    search(keyword: String!) : [SearchResult]!
+}
+
+# union타입에는 Interface가 직접 등록될 수 없다.
+union SearchResult = User | Electronics | Clothing
