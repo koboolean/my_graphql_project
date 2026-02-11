@@ -4,6 +4,8 @@ spring:
   graphql:
     schema:
       file-extensions: graphql
+    websocket:
+      path: graphql
 
 server:
   port: 8081

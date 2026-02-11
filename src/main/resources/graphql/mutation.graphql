@@ -6,7 +6,7 @@ type Mutation {
     addProduct(addProductInput : AddProductInput) : Product!
 
     # 장바구니 추가
-    addCartItem(addCartItemInput : AddCartItemInput) : CartItem!
+    addCartItem(addCartItemInput : AddCartItemInput) : Cart!
 
     # 장바구니 삭제
     deleteCartItem(deleteCartItemInput : DeleteCartItemInput) : Cart!

@@ -19,42 +19,48 @@ public class Database {
     private static final Database instance = new Database();
 
     public final List<Product> products = new ArrayList<>(Arrays.asList(
-            new Electronics(
-                    "1",
-                    "mac book air",
-                    1000.0,
-                    "3years"
-            ),
-            new Electronics(
-                    "2",
-                    "iphone 15",
-                    2000.0,
-                    "2years"
-            ),
-            new Electronics(
-                    "3",
-                    "samsung tv",
-                    3000.0,
-                    "1year"
-            ),
-            new Clothing(
-                    "5",
-                    "T-shirt",
-                    3000.0,
-                    "M"
-            ),
-            new Clothing(
-                    "6",
-                    "Jeans",
-                    3000.0,
-                    "XL"
-            ),
-            new Clothing(
-                    "7",
-                    "Dress",
-                    3000.0,
-                    "S"
-            )
+            Electronics.builder()
+                    .id("1")
+                    .name("mac book air")
+                    .price(1000.0)
+                    .warrantyPeriod("1years")
+                    .build(),
+            Electronics.builder()
+                    .id("2")
+                    .name("iphone 15")
+                    .price(2000.0)
+                    .warrantyPeriod("2years")
+                    .build(),
+            Electronics.builder()
+                    .id("3")
+                    .name("mac book air")
+                    .price(3000.0)
+                    .warrantyPeriod("3years")
+                    .build(),
+            Clothing.builder()
+                    .id("4")
+                    .name("T-shirt")
+                    .price(1000.0)
+                    .size("M")
+                    .build(),
+            Clothing.builder()
+                    .id("5")
+                    .name("Jeans")
+                    .price(2000.0)
+                    .size("L")
+                    .build(),
+            Clothing.builder()
+                    .id("6")
+                    .name("Dress")
+                    .price(3000.0)
+                    .size("S")
+                    .build(),
+            Clothing.builder()
+                    .id("7")
+                    .name("hat")
+                    .price(4000.0)
+                    .size("M")
+                    .build()
     ));
 
     public final List<User> users = new ArrayList<>(Arrays.asList(

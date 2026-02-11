@@ -1,40 +1,21 @@
 package com.koboolean.my_graphql_project.entity.product;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
 public class Electronics implements Product {
-    private final String id;
-    private final String name;
-    private final double price;
-    private final String warrantyPeriod;
-    private final ProductType productType = ProductType.ELECTRONICS;
+    private String id;
+    private String name;
+    private double price;
+    private String warrantyPeriod;
 
-    public Electronics(String id, String name, double price, String warrantyPeriod) {
-        this.id = id;
-        this.name = name;
-        this.price = price;
-        this.warrantyPeriod = warrantyPeriod;
-    }
+    @Builder.Default
+    private ProductType productType = ProductType.ELECTRONICS;
 
-    @Override
-    public String getId() {
-        return id;
-    }
-
-    @Override
-    public String getName() {
-        return name;
-    }
-
-    @Override
-    public double getPrice() {
-        return price;
-    }
-
-    public String getWarrantyPeriod() {
-        return warrantyPeriod;
-    }
-
-    @Override
-    public ProductType getProductType() {
-        return productType;
-    }
 }

@@ -92,18 +92,19 @@ type Query{
 union SearchResult = User | Electronics | Clothing
 
 type Mutation {
-    """유저 추가"""
+    # 유저 추가
     addUser(addUserInput : AddUserInput!) : User!
 
-    """제품 추가"""
+    # 제품 추가
     addProduct(addProductInput : AddProductInput) : Product!
 
-    """장바구니 추가"""
-    addCartItem(addCartItemInput : AddCartItemInput) : CartItem!
+    # 장바구니 추가
+    addCartItem(addCartItemInput : AddCartItemInput) : Cart!
 
-    """장바구니 삭제"""
+    # 장바구니 삭제
     deleteCartItem(deleteCartItemInput : DeleteCartItemInput) : Cart!
 }
+
 
 type Subscription{
     newProduct(productName : String) : Product!
