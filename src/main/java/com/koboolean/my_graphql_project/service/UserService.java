@@ -9,6 +9,7 @@ import org.apache.coyote.BadRequestException;
 import org.springframework.stereotype.Service;
 
 import java.time.OffsetDateTime;
+import java.util.List;
 import java.util.UUID;
 
 @Service
@@ -47,5 +48,9 @@ public class UserService {
         user.setCart(cart);
 
         return user;
+    }
+
+    public List<User> getUsers() {
+        return Database.getInstance().users;
     }
 }
