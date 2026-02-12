@@ -10,7 +10,7 @@ type Electronics implements Product{
     name : String!
     price: Float!
     productType : ProductType!
-    warrantPeriod: String!
+    warrantyPeriod: String!
 }
 
 
